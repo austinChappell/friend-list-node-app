@@ -1,0 +1,25 @@
+.delete-button {
+  background-color: red;
+  border: none;
+  border-radius: 3px;
+  margin-right: 10px;
+  color: white;
+}
+
+.delete-button:hover {
+  background-color: maroon;
+  cursor: pointer;
+}
+
+.fa-trash {
+  color: white;
+}
+
+li {
+  margin: 5px;
+  list-style: none;
+}
+
+.hide {
+  display: none;
+}

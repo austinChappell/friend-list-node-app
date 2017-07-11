@@ -1,0 +1,26 @@
+<% include partials/header %>
+
+<h1>Friends List</h1>
+
+<ul>
+  <% friends.forEach(function(friend) { %>
+    <li>
+      <form action='/removefriend' method='POST' onsubmit="return confirm('Are you sure? Do you really want to betray your friend?');">
+        <input class="hide" type='text' name='id' value=<%= friend._id %> />
+        <input type="submit" class="delete-button" value="DELETE" />
+         I have a friend named
+        <strong>
+          <a href='/friend/<%= friend.id %>'><%= friend.firstName %> <%= friend.lastName %></a>
+        </strong>.
+      </form>
+    </li>
+  <% }); %>
+</ul>
+
+<form action='/addfriend' method='POST'>
+  <input type='text' name='firstName' placeholder='First Name' autofocus required />
+  <input type='text' name='lastName' placeholder='Last Name' autofocus required />
+  <input type='submit' value='+' />
+</form>
+
+<% include partials/footer %>
