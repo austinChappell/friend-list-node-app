@@ -2,4 +2,40 @@
 
 <h1><%= friend[0].firstName %> <%= friend[0].lastName %></h1>
 
+<div class="about-wrapper">
+  <% if (friend[0].info.phone) { %>
+  <div>
+    <span class='profile-info'>Phone: </span><span><%= friend[0].info.phone %></span>
+  </div>
+  <% }; %>
+
+  <% if (friend[0].info.gender) { %>
+  <div>
+    <span class='profile-info'>Gender: </span><span><%= friend[0].info.gender %></span>
+  </div>
+  <% }; %>
+
+  <% if (friend[0].info.occupation) { %>
+  <div>
+    <span class='profile-info'>Occupation: </span><span><%= friend[0].info.occupation %></span>
+  </div>
+  <% }; %>
+
+  <% if (friend[0].info.hobbies) { %>
+  <div>
+    <span class='profile-info'>Hobbies: </span><span><%= friend[0].info.hobbies %></span>
+  </div>
+  <% }; %>
+</div>
+
+<div class="btn-wrapper">
+  <a id="update-button" class="button" href=<%= '/updateinfo/' + friend[0].id %>>Update Info</a>
+</div>
+
+<br />
+
+<div class="btn-wrapper">
+  <a id="back-button" class="button" href='/'>Back to Directory</a>
+</div>
+
 <% include partials/footer %>

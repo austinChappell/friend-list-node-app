@@ -11,7 +11,12 @@ mongoose.connect('mongodb://localhost/friends2');
 let friendSchema = new mongoose.Schema({
   firstName: String,
   lastName: String,
-  info: aboutSchema
+  info: {
+    phone: String,
+    gender: String,
+    occupation: String,
+    hobbies: String
+  }
 });
 
 let Friend = mongoose.model('Friend', friendSchema);
@@ -76,6 +81,46 @@ app.post('/removefriend', function(req, res) {
     } else {
       console.log(`You removed ${friend} from the DB.`);
       res.redirect('/');
+    };
+  });
+});
+
+app.get('/updateinfo/:id', function(req, res) {
+  let id = req.params.id;
+  Friend.find({
+    _id: id
+  }, function(err, friend) {
+    if(err) {
+      console.log(err);
+    } else {
+      res.render('updateinfo', {friend});
+    }
+  });
+});
+
+app.post('/update', function(req, res) {
+  let firstName = req.body.firstName;
+  let lastName = req.body.lastName;
+  let phone = req.body.phone;
+  let gender = req.body.gender;
+  let occupation = req.body.occupation;
+  let hobbies = req.body.hobbies;
+  let id = req.body.id;
+  Friend.update({ _id: id }, {
+    firstName,
+    lastName,
+    info: {
+      phone,
+      gender,
+      occupation,
+      hobbies
+    }
+  }, function(err) {
+    if(err) {
+      console.log(err);
+    } else {
+      console.log(req.body);
+      res.redirect(`/friend/${id}`);
     };
   });
 });

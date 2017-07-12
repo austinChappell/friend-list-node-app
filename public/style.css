@@ -1,3 +1,7 @@
+body {
+  margin: 20px;
+}
+
 .delete-button {
   background-color: red;
   border: none;
@@ -20,6 +24,64 @@ li {
   list-style: none;
 }
 
+.add-friend-form {
+  margin-top: 50px;
+}
+
+input, select {
+  font-size: 16px;
+  margin: 2px 0;
+}
+
+.form-group {
+  margin-bottom: 10px;
+}
+
 .hide {
   display: none;
+}
+
+.profile-info {
+  font-weight: bold;
+}
+
+.about-wrapper {
+  margin: 20px 20px 40px;
+}
+
+.btn-wrapper {
+  margin: 5px 0;
+}
+
+.button {
+  color: white;
+  text-decoration: none;
+  padding: 6px 8px;
+  border-radius: 3px;
+  box-shadow: 2px 1px 2px gray;
+  border: none;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.button:focus {
+  outline: none;
+}
+
+#add-friend-button {
+  background-color: green;
+  padding: 3px 6px;
+  font-size: 16px;
+}
+
+#update-button {
+  background-color: green;
+}
+
+#back-button {
+  background-color: navy;
+}
+
+footer {
+  margin-top: 80px;
 }

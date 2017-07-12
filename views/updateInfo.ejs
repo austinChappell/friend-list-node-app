@@ -1,0 +1,83 @@
+<% include partials/header %>
+
+<h1><%= friend[0].firstName %> <%= friend[0].lastName %></h1>
+
+<form action="/update" method="POST">
+
+  <div class="form-group">
+    <label for="firstName">First Name: </label>
+    <br />
+    <input type="text" name="firstName" value=<%= friend[0].firstName %> required >
+  </div>
+
+  <div class="form-group">
+    <label for="lastName">Last Name: </label>
+    <br />
+    <input type="text" name="lastName" value=<%= friend[0].lastName %> required >
+  </div>
+
+  <div class="form-group hide">
+    <label for="id"></label>
+    <br />
+    <input type="text" name="id" value=<%= friend[0].id %> >
+  </div>
+
+  <div class="form-group">
+    <label for="phone">Phone: </label>
+    <br />
+    <% if (friend[0].info.phone) { %>
+      <input type="tel" name="phone" value=<%= friend[0].info.phone %> >
+    <% } else { %>
+      <input type="tel" name="phone" value="" >
+    <% }; %>
+  </div>
+
+  <div class="form-group">
+    <label for="gender">Gender: </label>
+    <br />
+    <% if (friend[0].info.gender === 'male') { %>
+      <select name="gender">
+        <option value="">--</option>
+        <option value="male" selected>Male</option>
+        <option value="female">Female</option>
+      </select>
+    <% } else if (friend[0].info.gender === 'female') { %>
+      <select name="gender">
+        <option value="">--</option>
+        <option value="male">Male</option>
+        <option value="female" selected>Female</option>
+      </select>
+    <% } else { %>
+      <select name="gender">
+        <option value="" selected>--</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+      </select>
+    <% }; %>
+  </div>
+
+  <div class="form-group">
+    <label for="occupation">Occupation: </label>
+    <br />
+    <% if (friend[0].info.occupation) { %>
+      <input type="text" name="occupation" value="<%= friend[0].info.occupation %>" >
+    <% } else { %>
+      <input type="text" name="occupation" value="">
+    <% }; %>
+  </div>
+
+  <div class="form-group">
+    <label for="hobbies">Hobbies: </label>
+    <br />
+    <% if (friend[0].info.hobbies) { %>
+      <input type="text" name="hobbies" value="<%= friend[0].info.hobbies %>" >
+    <% } else { %>
+      <input type="text" name="hobbies" value="">
+    <% }; %>
+  </div>
+
+  <button type="submit" class="button" id="update-button">Update</button>
+
+</form>
+
+<% include partials/footer %>
